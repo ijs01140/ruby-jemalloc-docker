@@ -32,7 +32,7 @@ jobs:
         id: context
         run: |
           if [[ "${{ matrix.image }}" == "slim" ]] ; then
-            echo "image_name=ruby:${{ matrix.version }}-slim" >> ${GITHUB_OUTPUT}
+            echo "image_name=ijs01140/ruby:${{ matrix.version }}-slim-bookworm" >> ${GITHUB_OUTPUT}
           elif [[ "${{ matrix.image }}" == "ubuntu-20.04" ]] ; then
             echo "image_name=ubuntu:20.04" >> ${GITHUB_OUTPUT}
           elif [[ "${{ matrix.image }}" == "ubuntu-22.04" ]] ; then
@@ -66,4 +66,4 @@ jobs:
             RUBY_CHECKSUM=${{ matrix.checksum }}
             IMAGE_NAME=${{ steps.context.outputs.image_name }}
             ADDITIONAL_FLAGS=${{ steps.context.outputs.flags }}
-          tags: "ghcr.io/moritzheiber/ruby-jemalloc:${{ matrix.version }}-${{ matrix.image }}"
+          tags: "ghcr.io/ijs01140/ruby-jemalloc:${{ matrix.version }}-${{ matrix.image }}"
